@@ -283,7 +283,7 @@ export default function ProductController (MenuDemandFormService) {
     {
         productObject.categoryId = Product.getCategoryIdByProductId(productObject.ProductId);
         var newprice = productObject.newprice;
-        const formattedPrice = Money.convertCommaToDot(newprice);
+        const formattedPrice = Money.convertCommaToDot(newprice || '');
 
         if (formattedPrice > 999 || formattedPrice <= 0 || !Money.isValidFormat(newprice))
         {
