@@ -1,0 +1,39 @@
+<div class="sticky-footer">
+
+    <div class="sticky-box" ng-if="$ctrl.demandForm.showDemandSummary && $ctrl.demandForm.isDemandExist">
+        <h4>TALEPLERİM</h4>
+        <div aria-expanded="true">
+            <table class="table" width="100%">
+                <thead>
+                <tr>
+                    <th width="35%">Ürün Adı</th>
+                    <th width="35%">Açıklama</th>
+                    <th width="15%" class="text-right">Mevcut Fiyat</th>
+                    <th width="15%" class="text-center red-text">Yeni Fiyat</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, value) in $ctrl.demandForm.demandRequestObjects">
+                    <td ng-bind="$ctrl.demandForm.demandRequestObjects[key].Name"></td>
+                    <td ng-bind="$ctrl.demandForm.demandRequestObjects[key].Description"></td>
+                    <td class="text-right">{{$ctrl.demandForm.demandRequestObjects[key].Price}} TL</td>
+                    <td class="text-right">{{$ctrl.demandForm.demandRequestObjects[key].newprice || $ctrl.demandForm.demandRequestObjects[key].Price}} TL</td>
+                    <td width="90">
+                        <button ng-click="$ctrl.demandForm.Product.moveToProduct($ctrl.demandForm.demandRequestObjects[key])">Değiştir</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sticky-box-opener">
+
+        <button class="btn pull-right btn-green" ng-click="$ctrl.demandForm.submitForm()">
+            <span ><i class="fa fa-save"></i> TALEBİ İLET</span>
+        </button>
+        <button class="btn pull-left" ng-disabled="!$ctrl.demandForm.isDemandExist" ng-click="$ctrl.demandForm.showDemandSummary=($ctrl.demandForm.showDemandSummary)?false:true;">
+            <span class="hidden-sm hidden-xs">TALEPLERİM </span> <span class="badge badge-warning" ng-show="$ctrl.demandForm.isDemandExist" ng-bind="$ctrl.demandForm.demandCount"></span>
+        </button>
+    </div>
+</div>

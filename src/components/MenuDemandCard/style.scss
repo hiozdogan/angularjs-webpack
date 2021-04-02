@@ -1,0 +1,17 @@
+@import "../../theme/variables";
+
+.caption {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-card {
+  border: 1px solid #80808029;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.edit-field {
+  background-color: $light-orange;
+}

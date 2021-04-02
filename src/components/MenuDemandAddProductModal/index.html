@@ -1,0 +1,79 @@
+<div class="modal modal-add-product" id="addProductPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span ng-click="$ctrl.demandForm.categoryIdToSelect = null" class="modal-close pull-right close-button"  type="button" data-dismiss="modal" aria-label="Close">×</span>
+                <p class="modal-title-modified" id="myModalLabel">
+                    <span ng-show="!$ctrl.demandForm.editingDraft">Yeni Ürün Ekle</span>
+                    <span ng-show="$ctrl.demandForm.editingDraft">Düzenle</span>
+                </p>
+            </div>
+            <div class="modal-body">
+                <form name="form">
+                    <div class="row">
+                        <div class="col-md-4">Menü Başlık</div>
+                        <div class="col-md-8">
+                            <bootstrapselect ng-if="$ctrl.demandForm.categoryIdToSelect" id="categorySelectBox" class="full-width" ng-model="$ctrl.demandForm.newProduct.categoryId" source-data="$ctrl.demandForm.categories" value-property="Id" title-property="Name" option-view-limit="10" option-selected-value="$ctrl.demandForm.newProduct.categoryId">
+                            </bootstrapselect>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Ürün Adı</div>
+                        <div class="col-md-8">
+                            <input type="text" id="productName" placeholder="Ürün Adı Giriniz" ng-change="$ctrl.demandForm.onNewProductNameChange()" ng-model="$ctrl.demandForm.newProduct.name" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Fiyat</div>
+                        <div class="col-md-8">
+                            <input name="price"
+                                   type="text"
+                                   ng-model-options="{ updateOn: 'blur' }"
+                                   id="productPrice"
+                                   price-validation
+                                   ng-model="$ctrl.demandForm.newProduct.price" />
+                            <span>TL</span>
+                            <p class="red-text" ng-if="form.price.$error.validPriceRange">
+                                Fiyat 0-999 TL arasında olabilir.
+                            </p>
+                            <p class="red-text" ng-if="form.price.$error.validPriceFormat">
+                                Fiyat uygun formatta değildir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Açıklama</div>
+                        <div class="col-md-8">
+                            <input type="text" id="productDescription" ng-model="$ctrl.demandForm.newProduct.description" placeholder="Örn. Köfte Dürüm + Patates Kızartması + Ayran (18 cl)" />
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <button
+                                        id="createProduct"
+                                        class="btn btn-orange"
+                                        ng-disabled="!$ctrl.demandForm.newProduct.name || !$ctrl.demandForm.newProduct.price || form.price.$invalid"
+                                        ng-click="$ctrl.demandForm.saveDraftProduct()">
+                                    <i ng-show="!$ctrl.demandForm.editingDraft" class="fa fa-plus"></i>
+                                    <span ng-show="!$ctrl.demandForm.editingDraft">ÜRÜN EKLE</span>
+                                    <span ng-show="$ctrl.demandForm.editingDraft">ÜRÜNÜ GÜNCELLE</span>
+                                </button>
+                                <button id="deleteProduct" class="btn btn-red" ng-if="$ctrl.demandForm.editingDraft" ng-click="$ctrl.demandForm.deleteDraftProduct()">
+                                    <i class="fa fa-remove"></i>
+                                    <span>ÜRÜNÜ SİL</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

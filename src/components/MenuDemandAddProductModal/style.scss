@@ -1,0 +1,90 @@
+@import "../../theme/variables";
+
+#addProductPopup {
+    .modal-content {
+        margin: 15px 10px;
+    }
+    .row {
+        margin: 15px 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+        >div {
+            >input {
+                width: 100%;
+                padding: 3px 5px;
+                &::placeholder {
+                    color: #bbb;
+                }
+            }
+            >select {
+                width: 100%;
+                padding: 3px 5px;
+            }
+            &:nth-child(2) {
+                &::before {
+                    content: ":";
+                    left: -5px;
+                    top: 5px;
+                    position: absolute;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+    #myModalLabel {
+        font-weight: 500;
+        color: $primary;
+        margin-left: 25px;
+        font-size: 18px;
+    }
+    .modal-close {
+        width: 25px;
+        height: 25px;
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+    input#productPrice {
+        width: 65px !important;
+        text-align: center;
+    }
+    text-align: center;
+    padding: 0 !important;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+    li.bootstrap-select-presentation-data {
+        &:nth-child(2n) {
+            background: #f9f9f9;
+        }
+        &:hover {
+            background: #bcdad7;
+        }
+        a {
+            &:hover {
+                background: #bcdad7;
+            }
+            span {
+                font-weight: 400;
+            }
+        }
+    }
+
+    input[type="text"] {
+        border: 0.5px solid $fourth;
+    }
+}
+
+.close-button {
+    font-size: 20px;
+}

@@ -1,0 +1,17 @@
+.sticky-box {
+  border: 1px solid;
+  background: white;
+}
+.sticky-box-opener {
+  padding: 5px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
+  min-height: 50px;
+  background: transparent;
+  width: 100%;
+}

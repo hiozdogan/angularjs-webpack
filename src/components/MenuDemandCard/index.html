@@ -1,0 +1,74 @@
+<div ng-if="$ctrl.category.FilteredProducts.length" class="menu-card">
+    <div class="portlet-title wrap-floateds _{{$ctrl.category.Id}}" data-target="{{$ctrl.category.Id}}" id="{{$ctrl.category.UniqueName}}" data-toggle="collapse" data-parent="#accordion1" aria-expanded="true">
+        <div class="caption">
+            <h4>{{$ctrl.category.Name}}</h4>
+            <button
+                id="addProduct"
+                class="btn btn-orange"
+                ng-if="!$ctrl.demandForm.searching"
+                ng-click="$ctrl.demandForm.addNewProduct($ctrl.category.Id)">
+                <i class="fa fa-plus"></i> ÜRÜN EKLE
+            </button>
+        </div>
+
+
+        <hr />
+    </div>
+    <div
+        id="collapseId"
+        class="panel-collapse collapse in __{{$ctrl.category.Id}}"
+        aria-expanded="true">
+        <div class="portlet-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th width="35%">Ürün Adı</th>
+                    <th width="35%">Açıklama</th>
+                    <th width="15%" class="text-right">Mevcut Fiyat</th>
+                    <th width="15%" class="text-center red-text">Yeni Fiyat</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="product in $ctrl.category.FilteredProducts track by $index"
+                    ng-class="{'edit-field': product.isNewProduct, 'ifrowselected':product.demand.length > 0 && !product.wrongprice}"
+                    id="{{product.ProductId}}">
+                    <td>
+                        <span ng-bind="product.Name"></span>
+                    </td>
+                    <td ng-bind="product.Description"></td>
+                    <td class="text-right">{{product.Price}} TL</td>
+                    <td class="text-center" ng-hide="product.isNewProduct">
+                        <form name="form">
+                            <div>
+                                <input
+                                    size="10"
+                                    name="price"
+                                    class="text-center"
+                                    type="text"
+                                    ng-model="product.newprice"
+                                    ng-blur="$ctrl.demandForm.demandRequestBlur($event, product)"
+                                    ng-change="$ctrl.demandForm.onDemandRequest(product)"
+                                    price-validation/>
+                                <p class="red-text" ng-if="form.price.$error.validPriceRange">
+                                    Fiyat 0-999 TL arasında olabilir.
+                                </p>
+                                <p class="red-text" ng-if="form.price.$error.validPriceFormat">
+                                    Fiyat uygun formatta değildir.
+                                </p>
+                            </div>
+                        </form>
+                    </td>
+
+                    <td ng-show="product.isNewProduct">
+                        <button id="editProduct" class="btn btn-blue pull-right" ng-click="$ctrl.demandForm.editDraftProduct(product)">
+                            <i class="fa fa-pencil"></i> DÜZENLE
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

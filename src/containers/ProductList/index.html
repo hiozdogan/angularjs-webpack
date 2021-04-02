@@ -1,0 +1,13 @@
+<div ng-cloak ng-controller="MenuDemandFormController as DemandForm_VM">
+	<search-box on-change="DemandForm_VM.onChange"/>
+	<div ng-repeat="category in DemandForm_VM.categories" >
+		<menu-demand-card
+				category="category"
+				demand-form="DemandForm_VM" />
+	</div>
+	<div ng-if="DemandForm_VM.noResult"
+		 class="alert alert-info text-center">Sonuç Bulunamadı :(</div>
+	<menu-demand-my-demands-list demand-form="DemandForm_VM" />
+	<menu-demand-add-product-modal demand-form="DemandForm_VM" />
+</div>
+

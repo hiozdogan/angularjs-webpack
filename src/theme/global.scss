@@ -1,0 +1,73 @@
+@import "variables";
+
+#app {
+  height: 100vh;
+}
+
+.btn-orange {
+  background-color: $primary;
+  color: $third;
+}
+
+.btn-blue {
+  background-color: $sixth;
+  color: $third;
+}
+
+.btn-green {
+  background-color: $seventh;
+  color: $third;
+}
+
+.red-text {
+  color: $red;
+}
+
+.swal2-overlay {
+  z-index: 10060 !important;
+}
+.swal2-modal {
+  z-index: 10061 !important;
+}
+
+#deleteProduct {
+  font-size: 14px;
+}
+bootstrapselect.full-width {
+  width: 100%;
+  .dropdown {
+    >.dropdown-toggle {
+      width: 100%;
+      >span.pull-left {
+        width: 90% !important;
+      }
+    }
+  }
+  .dropdown-menu {
+    width: 100%;
+  }
+  div.dropdown {
+    >button {
+      min-height: 32px;
+    }
+  }
+}
+.dropup.open {
+  >.dropdown-toggle {
+    width: 100%;
+  }
+}
+bootstrapselect[option-dynamic-creation="true"].full-width {
+  .dropdown-menu {
+    top: -10px;
+  }
+}
+
+button {
+  background: #eee;
+  margin: 5px !important;
+  font-size: 12px !important;
+  border-radius: 2px;
+}
+
+

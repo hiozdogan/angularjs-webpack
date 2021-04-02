@@ -1,0 +1,17 @@
+<div id="searchBox">
+    <input
+            type="text"
+            id="stbox"
+            class="form-control"
+            ng-model="$ctrl.searchText"
+            ng-change="$ctrl.onChange($ctrl.searchText)"
+            placeholder="Ürün Adı Giriniz..." >
+    <span class="fa fa-search" />
+</div>
+<div class="search-result-area" ng-if="$ctrl.searchText">
+    <h5>Arama Sonuçları</h5>
+    <div class="btn btn-default" ng-click="$ctrl.reset()">
+        <i class="fa fa-arrow-left"/>Ürün Listesine Dön
+    </div>
+</div>
+
