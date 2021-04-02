@@ -14,7 +14,7 @@ cd angularjs-webpack
 npm install
 ```
 
-In order to run on development mode
+In order to run for development
 ```
 npm run start
 ```
